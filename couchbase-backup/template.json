@@ -1,0 +1,88 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resource_name": {
+            "defaultValue": "au-couchbase-backup",
+            "type": "String"
+        },
+        "disks_au_couchbase_backup_OsDisk_1_694aae32c970482f966940ec87835827_externalid": {
+            "defaultValue": "/subscriptions/ec51da25-eb08-4ef6-979c-450aa85fba8f/resourceGroups/AUSTRALIA-EAST/providers/Microsoft.Compute/disks/au-couchbase-backup_OsDisk_1_694aae32c970482f966940ec87835827",
+            "type": "String"
+        },
+        "disks_au_couchbase_backup_DataDisk_0_externalid": {
+            "defaultValue": "/subscriptions/ec51da25-eb08-4ef6-979c-450aa85fba8f/resourceGroups/Australia-East/providers/Microsoft.Compute/disks/au-couchbase-backup_DataDisk_0",
+            "type": "String"
+        },
+        "virtual_net_id": {
+            "defaultValue": "/subscriptions/ec51da25-eb08-4ef6-979c-450aa85fba8f/resourceGroups/Australia-East/providers/Microsoft.Network/networkInterfaces/au-couchbase-backup643",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-07-01",
+            "name": "[parameters('resource_name')]",
+            "location": "australiaeast",
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D2s_v3"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "Canonical",
+                        "offer": "UbuntuServer",
+                        "sku": "18.04-LTS",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Linux",
+                        "name": "[concat(parameters('resource_name'), '_OsDisk_1_694aae32c970482f966940ec87835827')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Standard_LRS",
+                            "id": "[parameters('disks_au_couchbase_backup_OsDisk_1_694aae32c970482f966940ec87835827_externalid')]"
+                        },
+                        "diskSizeGB": 30
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "[concat(parameters('resource_name'), '_DataDisk_0')]",
+                            "createOption": "Attach",
+                            "caching": "None",
+                            "writeAcceleratorEnabled": false,
+                            "managedDisk": {
+                                "storageAccountType": "Premium_LRS",
+                                "id": "[parameters('disks_au_couchbase_backup_DataDisk_0_externalid')]"
+                            },
+                            "diskSizeGB": 256,
+                            "toBeDetached": false
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('resource_name')]",
+                    "adminUsername": "[concat(parameters('resource_name'), '-admin')]",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": false,
+                        "provisionVMAgent": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true,
+                    "requireGuestProvisionSignal": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[parameters('virtual_net_id')]"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
