@@ -1,0 +1,20 @@
+{
+    "_id": "_design/idv4",
+    "views": {
+        "api-resource": {
+            "map": "function map(doc, meta) {\n    if (doc.type === 'idv4-api-resource') {\n        emit(null, null);\n        doc.apiResource.scopes.forEach(function(scope) {\n            emit(scope.name, null);\n        });\n    }\n}"
+        },
+        "data-protection-key": {
+            "map": "function map(doc, meta) {\n    if (doc.type === 'data-protection-key') {\n        emit(null, null);\n    }\n}"
+        },
+        "grant": {
+            "map": "function map(doc, meta) {\n    if (doc.type === 'idv4-grant') {\n        emit([doc.grant.subjectId, doc.grant.clientId, doc.grant.type], null);\n    }\n}"
+        },
+        "identity-resource": {
+            "map": "function map(doc, meta) {\n    if (doc.type === 'idv4-identity-resource' || doc.type === 'idv4-scope') {\n        emit(null, null);\n        if (doc.identityResource.showInDiscoveryDocument) {\n            emit(true, null);\n        }\n    }\n}"
+        },
+        "scope": {
+            "map": "function map(doc, meta) {\n    if (doc.type === 'idv4-scope') {\n        emit(doc.scope.name, null);\n        if (doc.scope.showInDiscoveryDocument) {\n            emit(true, doc.scope.name);\n        }\n    }\n}"
+        }
+    }
+}

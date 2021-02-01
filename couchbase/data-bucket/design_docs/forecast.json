@@ -1,0 +1,11 @@
+{
+    "_id": "_design/forecast",
+    "views": {
+        "forecast-configurations": {
+            "map": "function map(doc, meta) {\n    if (doc.type === 'forecast-configuration') {\n        emit(doc.clinic_id, null);\n    }\n}"
+        },
+        "forecast-data": {
+            "map": "function map(doc, meta) {\n    if (doc.type === 'selfassessment') {\n        emit(doc.user_id, null);\n        emit([doc.date, doc.user_id], null);\n    }\n}"
+        }
+    }
+}

@@ -1,0 +1,273 @@
+{
+    "name": "name",
+    "sourceName": "data",
+    "type": "fulltext-index",
+    "sourceType": "couchbase",
+    "planParams": {
+        "maxPartitionsPerPIndex": 32
+    },
+    "params": {
+        "doc_config": {
+            "docid_prefix_delim": "",
+            "docid_regexp": "",
+            "mode": "type_field",
+            "type_field": "type"
+        },
+        "mapping": {
+            "analysis": {
+                "analyzers": {
+                    "remove_dashes": {
+                        "char_filters": [
+                            "remove_dashes_filter"
+                        ],
+                        "tokenizer": "single",
+                        "type": "custom"
+                    },
+                    "to_lower": {
+                        "token_filters": [
+                            "to_lower"
+                        ],
+                        "tokenizer": "single",
+                        "type": "custom"
+                    }
+                },
+                "char_filters": {
+                    "remove_dashes_filter": {
+                        "regexp": "-",
+                        "replace": "",
+                        "type": "regexp"
+                    }
+                }
+            },
+            "default_analyzer": "standard",
+            "default_datetime_parser": "dateTimeOptional",
+            "default_field": "_all",
+            "default_mapping": {
+                "dynamic": true,
+                "enabled": false
+            },
+            "default_type": "_default",
+            "docvalues_dynamic": true,
+            "index_dynamic": false,
+            "store_dynamic": false,
+            "type_field": "type",
+            "types": {
+                "user_details": {
+                    "dynamic": false,
+                    "enabled": true,
+                    "properties": {
+                        "accountType": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_term_vectors": true,
+                                    "index": true,
+                                    "name": "accountType",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "birthyear": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_term_vectors": true,
+                                    "name": "birthyear",
+                                    "type": "number"
+                                }
+                            ]
+                        },
+                        "children": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "name": "children",
+                                    "type": "number"
+                                }
+                            ]
+                        },
+                        "civil_status": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "name": "civil_status",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "clinic_id": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_term_vectors": true,
+                                    "index": true,
+                                    "name": "clinic_id",
+                                    "type": "number"
+                                }
+                            ]
+                        },
+                        "contact_info": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "properties": {
+                                "email": {
+                                    "dynamic": false,
+                                    "enabled": true,
+                                    "fields": [
+                                        {
+                                            "name": "email",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "first_name": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_in_all": true,
+                                    "include_term_vectors": true,
+                                    "index": true,
+                                    "name": "first_name",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "gender": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "name": "gender",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "is_deleted": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_term_vectors": true,
+                                    "name": "is_deleted",
+                                    "type": "boolean"
+                                }
+                            ]
+                        },
+                        "is_patient": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_term_vectors": true,
+                                    "name": "is_patient",
+                                    "type": "boolean"
+                                }
+                            ]
+                        },
+                        "middle_name": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_in_all": true,
+                                    "include_term_vectors": true,
+                                    "index": true,
+                                    "name": "middle_name",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "network": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "name": "network",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "occupation": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "name": "occupation",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "passive": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "name": "passive",
+                                    "type": "boolean"
+                                }
+                            ]
+                        },
+                        "pidnr": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "analyzer": "remove_dashes",
+                                    "include_term_vectors": true,
+                                    "index": true,
+                                    "name": "pidnr",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "surname": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_in_all": true,
+                                    "include_term_vectors": true,
+                                    "index": true,
+                                    "name": "surname",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "user_id": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "name": "user_id",
+                                    "type": "number"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "store": {
+            "indexType": "scorch",
+            "kvStoreName": ""
+        }
+    },
+    "sourceParams": {
+        "clusterManagerBackoffFactor": 0,
+        "clusterManagerSleepInitMS": 0,
+        "clusterManagerSleepMaxMS": 2000,
+        "dataManagerBackoffFactor": 0,
+        "dataManagerSleepInitMS": 0,
+        "dataManagerSleepMaxMS": 2000,
+        "feedBufferAckThreshold": 0,
+        "feedBufferSizeBytes": 0
+    }
+}

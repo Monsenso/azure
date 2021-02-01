@@ -1,0 +1,16 @@
+{
+    "statements": [
+        {
+            "statement": "CREATE INDEX `doc_ids` ON `system`((meta().`id`))",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `jobserver_covering_idx` ON `system`(`type`,`key`,`job_id`,`last_heartbeat`,`created_on`,`expire_on`,`name`,`state_name`,(meta().`id`))",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `jobserver_set_values` ON `system`((all (array [(`p`.`name`), (`p`.`val`)] for `p` in object_innerpairs(self) end))) WHERE ((meta().`id`) like 'set_%')",
+            "args": null
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "statements": [
+        {
+            "statement": "CREATE INDEX `account_settings` ON `auth`(`accountId`, pairs(`settings`)) WHERE (`type` = 'account-settings')",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `documents` ON `auth`(`type`,ifmissingornull(`clinicId`, `clinic_id`),ifmissingornull(`accountId`, `user_id`))",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `email` ON `auth`(`validated`,str_to_utc(`timeOfCreation`),`clinicId`,`accountId`) WHERE (`type` = 'email')",
+            "args": null
+        }
+    ]
+}

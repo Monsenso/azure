@@ -1,0 +1,9 @@
+{
+    "_id": "_design/account-mgmt",
+    "views": {
+        "group": {
+            "map": "function map(doc, meta) {\n    if (doc.type === \"group-membership\") {\n        emit(doc.user_id, doc.groupId);\n        emit(doc.groupId, doc.user_id);\n    }\n}",
+            "reduce": "_count"
+        }
+    }
+}

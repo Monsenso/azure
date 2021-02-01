@@ -1,0 +1,8 @@
+{
+    "_id": "_design/patient",
+    "views": {
+        "syncIds": {
+            "map": "function map(doc, meta) {\n    if (doc.type === 'user' && doc.sync_id) {\n        emit(doc.sync_id, doc.user_id);\n        emit(['clinic', doc.clinicId], doc.sync_id);\n    }\n}"
+        }
+    }
+}

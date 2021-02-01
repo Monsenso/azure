@@ -1,0 +1,11 @@
+{
+    "_id": "_design/user",
+    "views": {
+        "ids": {
+            "map": "function map(doc, meta) {\n    if (doc.type === 'email') {\n        emit([doc.clinicId, doc.accountType], doc.user_id);\n        emit(doc.accountType, doc.user_id);\n    }\n}"
+        },
+        "pwdResetToken": {
+            "map": "function map(doc, meta) {\n    if (doc.password_reset_token) {\n        emit(doc.password_reset_token, meta.id);\n    }\n}"
+        }
+    }
+}

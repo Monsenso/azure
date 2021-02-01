@@ -1,0 +1,36 @@
+{
+    "statements": [
+        {
+            "statement": "CREATE INDEX `accounts` ON `data`(`type`,`accountId`,`accountType`,(distinct (array `clinicId` for `clinicId` in `clinicIds` end)),`firstName`,`middleName`,`surname`) WHERE (`type` = 'user_details')",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `documents` ON `data`(`type`,ifmissingornull(`clinicId`, `clinic_id`),ifmissingornull(`accountId`, `user_id`))",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `instance_keys` ON `data`(`type`,`accountId`,(distinct (array (`v`.`name`) for `v` in object_innerpairs(`instances`) end)))",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `instances` ON `data`(`type`,`accountId`,`clinicId`,`clinic_id`) WHERE (`instances` is not missing)",
+            "args": null
+        }
+,
+        {
+            "statement": "CREATE INDEX `shared_instances` ON `data`((distinct (array ((`v`.`val`).`groups`) for `v` in object_innerpairs(`instances`) end)),`type`,`clinicId`,`clinic_id`) WHERE (`instancesAreShareable` = true)",
+            "args": null
+        }
+,
+        {
+            "statement": "CREATE INDEX `treatment_plan_item_triggers` ON `data`(`clinicId`,(distinct (array (distinct (array [(`P`.`name`), ((`V`.`val`).`name`), (((`V`.`val`).`trigger`).`triggerType`), (((`V`.`val`).`trigger`).`days`), (`V`.`val`), to_number(`pid`)] for `V` in object_innerpairs(((`P`.`val`).`items`)), `pid` in object_names(((`P`.`val`).`patients`)) end)) for `P` in object_innerpairs(`instances`) end))) WHERE (`type` = 'treatment-plans')",
+            "args": null
+        }
+,
+        {
+            "statement": "CREATE INDEX `treatment_plan_jointime` ON `data`(`accountId`,(distinct (array [(`v`.`name`), ((`v`.`val`).`joinTime`)] for `v` in object_innerpairs(`instances`) end))) WHERE (`type` = 'patient-plan')",
+            "args": null
+        }
+    ]
+}
+

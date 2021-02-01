@@ -1,0 +1,105 @@
+{
+    "name": "accounts",
+    "sourceName": "data",
+    "type": "fulltext-index",
+    "sourceType": "couchbase",
+    "planParams": {
+        "maxPartitionsPerPIndex": 171
+    },
+    "params": {
+        "doc_config": {
+            "docid_prefix_delim": "",
+            "docid_regexp": "",
+            "mode": "type_field",
+            "type_field": "type"
+        },
+        "mapping": {
+            "analysis": {},
+            "default_analyzer": "standard",
+            "default_datetime_parser": "dateTimeOptional",
+            "default_field": "_all",
+            "default_mapping": {
+                "dynamic": false,
+                "enabled": false
+            },
+            "default_type": "_default",
+            "docvalues_dynamic": true,
+            "index_dynamic": false,
+            "store_dynamic": false,
+            "type_field": "_type",
+            "types": {
+                "user_details": {
+                    "dynamic": true,
+                    "enabled": true,
+                    "properties": {
+                        "accountId": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_term_vectors": true,
+                                    "name": "accountId",
+                                    "store": true,
+                                    "type": "number"
+                                }
+                            ]
+                        },
+                        "clinicIds": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_term_vectors": true,
+                                    "index": true,
+                                    "name": "clinicIds",
+                                    "type": "number"
+                                }
+                            ]
+                        },
+                        "firstName": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_in_all": true,
+                                    "index": true,
+                                    "name": "firstName",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "middleName": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_in_all": true,
+                                    "index": true,
+                                    "name": "middleName",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "surname": {
+                            "dynamic": false,
+                            "enabled": true,
+                            "fields": [
+                                {
+                                    "include_in_all": true,
+                                    "index": true,
+                                    "name": "surname",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "store": {
+            "indexType": "scorch",
+            "kvStoreName": ""
+        }
+    },
+    "sourceParams": {}
+}

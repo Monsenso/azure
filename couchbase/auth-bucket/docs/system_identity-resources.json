@@ -1,0 +1,80 @@
+{
+    "instances": {
+        "address": {
+            "description": null,
+            "displayName": "Your postal address",
+            "emphasize": true,
+            "enabled": true,
+            "name": "address",
+            "required": false,
+            "showInDiscoveryDocument": true,
+            "userClaims": [
+                "address"
+            ]
+        },
+        "email": {
+            "description": null,
+            "displayName": "Your email address",
+            "emphasize": true,
+            "enabled": true,
+            "name": "email",
+            "required": false,
+            "showInDiscoveryDocument": true,
+            "userClaims": [
+                "email",
+                "email_verified"
+            ]
+        },
+        "openid": {
+            "description": null,
+            "displayName": "Your user identifier",
+            "emphasize": true,
+            "enabled": true,
+            "name": "openid",
+            "required": true,
+            "showInDiscoveryDocument": true,
+            "userClaims": [
+                "sub"
+            ]
+        },
+        "phone": {
+            "description": null,
+            "displayName": "Your phone number",
+            "emphasize": true,
+            "enabled": true,
+            "name": "phone",
+            "required": false,
+            "showInDiscoveryDocument": true,
+            "userClaims": [
+                "phone_number",
+                "phone_number_verified"
+            ]
+        },
+        "profile": {
+            "description": null,
+            "displayName": "User profile",
+            "emphasize": true,
+            "enabled": true,
+            "name": "profile",
+            "required": true,
+            "showInDiscoveryDocument": true,
+            "userClaims": [
+                "name",
+                "family_name",
+                "given_name",
+                "middle_name",
+                "nickname",
+                "preferred_username",
+                "profile",
+                "picture",
+                "website",
+                "gender",
+                "birthdate",
+                "zoneinfo",
+                "locale",
+                "updated_at"
+            ]
+        }
+    },
+    "type": "identity-resources"
+}

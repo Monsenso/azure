@@ -1,0 +1,585 @@
+{
+    "instances": {
+        "account": {
+            "apiSecrets": [],
+            "description": "",
+            "enable": true,
+            "name": "Account",
+            "scopes": [
+                {
+                    "description": null,
+                    "displayName": "Create admissions",
+                    "name": "account:admission:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View your admissions",
+                    "name": "account:admission:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View your badges",
+                    "name": "account:badge:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View your challenges",
+                    "name": "account:challenge:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update the state of your challenges",
+                    "name": "account:challenge:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create consultation",
+                    "name": "account:consultation:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete consultation",
+                    "name": "account:consultation:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View consultations",
+                    "name": "account:consultation:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update consultation",
+                    "name": "account:consultation:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create if-then",
+                    "name": "account:if-then:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete if-then",
+                    "name": "account:if-then:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View if-thens",
+                    "name": "account:if-then:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update if-then",
+                    "name": "account:if-then:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create medication",
+                    "name": "account:medication:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete medication",
+                    "name": "account:medication:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View medication",
+                    "name": "account:medication:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update medication",
+                    "name": "account:medication:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View your personal identification number",
+                    "name": "account:pidnr:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create plan of action",
+                    "name": "account:plan-of-action:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete plan of action",
+                    "name": "account:plan-of-action:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View plan of actions",
+                    "name": "account:plan-of-action:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update plan of action",
+                    "name": "account:plan-of-action:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View personalized self assessment",
+                    "name": "account:self-assessment-modification:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update personalized self assessment",
+                    "name": "account:self-assessment-modification:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Read your profile settings",
+                    "name": "account:settings:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Change your profile settings",
+                    "name": "account:settings:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View your tools",
+                    "name": "account:tool:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                }
+            ],
+            "userClaims": []
+        },
+        "clinic": {
+            "apiSecrets": [],
+            "description": "",
+            "enable": true,
+            "name": "Clinic",
+            "scopes": [
+                {
+                    "description": null,
+                    "displayName": "Create article",
+                    "name": "clinic:article:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete article",
+                    "name": "clinic:article:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View articles",
+                    "name": "clinic:article:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update article",
+                    "name": "clinic:article:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Assign and unassign a patient plan to a Patient",
+                    "name": "clinic:assign-patient-plan:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create challenge",
+                    "name": "clinic:challenge:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete challenge",
+                    "name": "clinic:challenge:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View challenges",
+                    "name": "clinic:challenge:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update challenge",
+                    "name": "clinic:challenge:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View defaults",
+                    "name": "clinic:clinic-defaults:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update defaults",
+                    "name": "clinic:clinic-defaults:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create group",
+                    "name": "clinic:group:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete group",
+                    "name": "clinic:group:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View group",
+                    "name": "clinic:group:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update group and manage its members and patients",
+                    "name": "clinic:group:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create patient plan",
+                    "name": "clinic:patient-plan:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete patient plan",
+                    "name": "clinic:patient-plan:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View patient plan",
+                    "name": "clinic:patient-plan:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update patinet plan",
+                    "name": "clinic:patient-plan:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create a patient rating",
+                    "name": "clinic:patient-rating:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create plan of action template",
+                    "name": "clinic:plan-of-action:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete plan of action template",
+                    "name": "clinic:plan-of-action:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View plan of action templates",
+                    "name": "clinic:plan-of-action:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update plan of action template",
+                    "name": "clinic:plan-of-action:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create questionnaire",
+                    "name": "clinic:questionnaire:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete questionnaire",
+                    "name": "clinic:questionnaire:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View questionnaires",
+                    "name": "clinic:questionnaire:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update questionnaire",
+                    "name": "clinic:questionnaire:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create tool",
+                    "name": "clinic:tool:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete tool",
+                    "name": "clinic:tool:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View tools",
+                    "name": "clinic:tool:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update tool",
+                    "name": "clinic:tool:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Create topic",
+                    "name": "clinic:topic:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Delete topic",
+                    "name": "clinic:topic:delete",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View topics",
+                    "name": "clinic:topic:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "Update topic",
+                    "name": "clinic:topic:update",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                }
+            ],
+            "userClaims": []
+        },
+        "data": {
+            "apiSecrets": [],
+            "description": "",
+            "enable": true,
+            "name": "Data",
+            "scopes": [
+                {
+                    "description": null,
+                    "displayName": "Create a personal attribute",
+                    "name": "account:attribute:create",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View data",
+                    "name": "account:data:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View questionnaire answers",
+                    "name": "account:data-questionnaire:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                },
+                {
+                    "description": null,
+                    "displayName": "View sensor data",
+                    "name": "account:data-sensor:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                }
+            ],
+            "userClaims": []
+        },
+        "rest": {
+            "apiSecrets": [],
+            "description": "",
+            "enable": true,
+            "name": "RestService",
+            "scopes": [
+                {
+                    "description": null,
+                    "displayName": "Read your associations",
+                    "name": "account:association:read",
+                    "required": false,
+                    "showInDiscoveryDocument": true,
+                    "userClaims": []
+                }
+            ],
+            "userClaims": []
+        }
+    },
+    "type": "apis"
+}
