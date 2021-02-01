@@ -31,3 +31,8 @@ N1QL indices must be added to the `./couchbase/*_bucket/design_docs/indexes.json
 
 FTS indices must be as a JSON file in the `./couchbase/fts-indices/` folder, the name of the
 file, excluding the extension, will be the name of the index.
+
+# Secrets
+To add a new secret add a file in the secrets folder, the name of the file will be the name of
+the secret. The file will be executed as a bash script and its stdout is used as the secret
+value.
