@@ -52,12 +52,9 @@ done
 
 . utils/secret_exists.sh
 . utils/set_secret.sh
+. utils/ensure_az_login.sh
 
-if ! az account show &> /dev/null; then
-    echo 'Not logged into Azure.'
-    echo "Running az login, a browser window will open asking you to sign in."
-    az login &> /dev/null
-fi
+ensuze_az_login
 
 VAULT_NAME=monsenso-$SERVING_REGION-$ENV-kv
 for f in secrets/*

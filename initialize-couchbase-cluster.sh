@@ -53,6 +53,28 @@ couchbase-cli cluster-init \
     --cluster-index-ramsize=$INDEX_RAMSIZE \
     --services=data,index,query,fts
 
+couchbase-cli setting-security \
+    --cluster couchabse://localhost \
+    --username $ADMIN_USERNAME \
+    --password $ADMIN_PASSWORD \
+    --tls-min-version tlsv1.2 \
+    --tsl-honor-cipher-order 1 \
+    --cipher-suites TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,`
+                    `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+
+# Upload cluster CA
+echo "Uploading Let’s Encrypt R3 as cluster CA"
+wget https://letsencrypt.org/certs/lets-encrypt-r3.pem
+couchbase-cli ssl-manage \
+    --cluster couchbase://localhost \
+    --username $ADMIN_USERNAME \
+    --password $ADMIN_PASSWORD \
+    --upload-cluster-ca ./lets-encrypt-r3.pem
+
+mkdir -p /opt/couchbase/var/lib/couchbase/inbox
+chown couchbase:couchbase /opt/couchbase/var/lib/couchbase/inbox
+chmod 733 /opt/couchbase/var/lib/couchbase/inbox
+
 # Create buckets
 echo "Creating auth bucket"
 couchbase-cli bucket-create -c localhost --bucket-type=couchbase \
