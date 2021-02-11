@@ -1,23 +1,25 @@
 # Create a new environment on Azure
 
 1. Have Sentia create the environment.
-2. Run ./setup-secrets.
-3. Run ./initialize-couchbase-cluster, with proper environment variables set (read the file for
+2. Create/generate a key named `data-protection` in the key vault.
+3. Run ./setup-secrets.
+4. Run ./initialize-couchbase-cluster, with proper environment variables set (read the file for
    those available and their defaults).
-4. Setup global bucket XDCR.
-5. Add a group to Couchbase called `services` with the Query CURL access role and the following
+5. Setup global bucket XDCR.
+6. Add a group to Couchbase called `services` with the Query CURL access role and the following
    roles on All buckets: Application Access, Data Reader, Data Writer, Data DCP Reader,
    Data Monitor, Views Reader, Query Select, Query Update, Query Insert, and Query Delete.
-5. Add a user to Couchbase called service-client with the password from the couchbasePassword
+7. Add a user to Couchbase called service-client with the password from the couchbasePassword
    secret in the key vault.
    couchbasePassword. And add the user to the services group.
-5. Modify Function app and app service Configuration sections as needed.
-6. Deploy AzureFunctions.
-7. Run ./setup-secrets; Function app secrets are not available until an app has been deployed.
-8. Deploy the App Services.
-9. Add TLS certificate to the key vault.
-10. Setup custom domains for the IdentityServer and RestService App Sernvices.
-11. Configure TLS for the IdentityServer and RestService App Sernvices.
+8. Modify Function app and app service Configuration sections as needed.
+9. Deploy AzureFunctions.
+10. Run ./setup-secrets; Function app secrets are not available until an app has been deployed.
+11. Deploy the App Services.
+12. Add TLS certificate to the key vault.
+13. Setup custom domains for the IdentityServer and RestService App Sernvices.
+14. Configure TLS for the IdentityServer and RestService App Sernvices.
+15. Upload signing-cert.pfx and extra-valid-cert.pfx to the IdentityServer service. Temporarily enable ftps for the service to upload them over ftps.
 
 # Couchbase cluster initialization
 Documents that should be insterted into a new cluster must be added as JSON files in the
