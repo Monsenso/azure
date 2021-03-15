@@ -1,3 +1,5 @@
+#!/bin/bash
+
 NODE_FQDN=${NODE_FQDN:-localhost}
 ADMIN_USERNAME=${ADMIN_USERNAME:-Administrator}
 CLUSTER_RAMSIZE=${CLUSTER_RAMSIZE:-20480}
@@ -21,6 +23,7 @@ echo "  AUTH_BUCKET_RAMSIZE: $AUTH_BUCKET_RAMSIZE"
 echo "  DATA_BUCKET_RAMSIZE: $DATA_BUCKET_RAMSIZE"
 echo "  SYSTEM_BUCKET_RAMSIZE: $SYSTEM_BUCKET_RAMSIZE"
 echo "  GLOBAL_BUCKET_RAMSIZE: $GLOBAL_BUCKET_RAMSIZE"
+echo "  BUCKUT_PREFIX: $BUCKET_PREFIX"
 while true; do
     read -p 'Are these correct? [yes/No] ' yn
     case $yn in
@@ -54,11 +57,12 @@ couchbase-cli cluster-init \
     --services=data,index,query,fts
 
 couchbase-cli setting-security \
-    --cluster couchabse://localhost \
+    --cluster couchbase://localhost \
     --username $ADMIN_USERNAME \
     --password $ADMIN_PASSWORD \
+    --set \
     --tls-min-version tlsv1.2 \
-    --tsl-honor-cipher-order 1 \
+    --tls-honor-cipher-order 1 \
     --cipher-suites TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,`
                     `TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
 
@@ -78,48 +82,51 @@ chmod 733 /opt/couchbase/var/lib/couchbase/inbox
 # Create buckets
 echo "Creating auth bucket"
 couchbase-cli bucket-create -c localhost --bucket-type=couchbase \
-    --bucket=auth --bucket-ramsize=$AUTH_BUCKET_RAMSIZE -u Administrator -p password
+    --bucket=${BUCKET_PREFIX}auth --bucket-ramsize=$AUTH_BUCKET_RAMSIZE -u $ADMIN_USERNAME -p $ADMIN_PASSWORD
 
 echo "Creating data bucket"
 couchbase-cli bucket-create -c localhost --bucket-type=couchbase \
-    --bucket=data --bucket-ramsize=$DATA_BUCKET_RAMSIZE -u Administrator -p password
+    --bucket=${BUCKET_PREFIX}data --bucket-ramsize=$DATA_BUCKET_RAMSIZE -u $ADMIN_USERNAME -p $ADMIN_PASSWORD
 
 echo "Creating system bucket"
 couchbase-cli bucket-create -c localhost --bucket-type=couchbase \
-    --bucket=system --bucket-ramsize=$SYSTEM_BUCKET_RAMSIZE -u Administrator -p password
+    --bucket=${BUCKET_PREFIX}system --bucket-ramsize=$SYSTEM_BUCKET_RAMSIZE -u $ADMIN_USERNAME -p $ADMIN_PASSWORD
 
 echo "Creating global bucket"
 couchbase-cli bucket-create -c localhost --bucket-type=couchbase \
-    --bucket=global --bucket-ramsize=$GLOBAL_BUCKET_RAMSIZE -u Administrator -p password
+    --bucket=${BUCKET_PREFIX}global --bucket-ramsize=$GLOBAL_BUCKET_RAMSIZE -u $ADMIN_USERNAME -p $ADMIN_PASSWORD
 
 # Whitelist CURL URLs
 echo "Whitelisting CURL URLs"
-curl -s -X POST -u Administrator:password \
+curl -s -X POST -u $ADMIN_USERNAME:$ADMIN_PASSWORD \
     -d "{\"all_access\": false, \"allowed_urls\" : [\"http://localhost:8094/\", \"http://$NODE_FQDN:8094\"] }" \
     http://localhost:8091/settings/querySettings/curlWhitelist
 
 # Create documents, indexes, and design documents (views)
 echo "Populating auth bucket"
-cbdocloader -c couchbase://localhost -u Administrator -p password -m 100 \
-    -b auth -d ./couchbase/auth-bucket/
+cbdocloader -c couchbase://localhost -u $ADMIN_USERNAME -p $ADMIN_PASSWORD -m 100 \
+    -b ${BUCKET_PREFIX}auth -d ./couchbase/auth-bucket/
 
 echo "Populating data bucket"
-cbdocloader -c couchbase://localhost -u Administrator -p password -m 100 \
-    -b data -d ./couchbase/data-bucket/
+cbdocloader -c couchbase://localhost -u $ADMIN_USERNAME -p $ADMIN_PASSWORD -m 100 \
+    -b ${BUCKET_PREFIX}data -d ./couchbase/data-bucket/
 
-echo "Populating system bucket"
-cbdocloader -c couchbase://localhost -u Administrator -p password -m 100 \
-    -b system -d ./couchbase/system-bucket/
+if [ -d ./couchbase/system-bucket ]; then
+    echo "Populating system bucket"
+    cbdocloader -c couchbase://localhost -u $ADMIN_USERNAME -p $ADMIN_PASSWORD -m 100 \
+        -b ${BUCKET_PREFIX}system -d ./couchbase/system-bucket/
+fi
 
-echo "Populating global bucket"
-cbdocloader -c couchbase://localhost -u Administrator -p password -m 100 \
-    -b global -d ./couchbase/global-bucket/
+if [ -d ./couchbase/global-bucket ]; then
+    echo "Populating global bucket"
+    cbdocloader -c couchbase://localhost -u $ADMIN_USERNAME -p $ADMIN_PASSWORD -m 100 \
+        -b ${BUCKET_PREFIX}global -d ./couchbase/global-bucket/
+fi
 
 # Create FTS indices
 echo "Creating FTS indices"
-for ftsIndex in .couchbase/fts-indices/*; do
-    echo $ftsIndex
-    curl -s -X PUT -u Administrator:password -H 'Content-Type: application/json' \
+for ftsIndex in ./couchbase/fts-indices/*; do
+    curl -s -X PUT -u $ADMIN_USERNAME:$ADMIN_PASSWORD -H 'Content-Type: application/json' \
         -d @$ftsIndex \
         http://localhost:8094/api/index/$(basename $ftsIndex .json)
 done
