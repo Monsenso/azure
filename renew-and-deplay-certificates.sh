@@ -34,15 +34,9 @@ renew_web_service_cert monsenso-au-prd-kv "*.au.monsenso.com" $SUB_PRD01
 
 echo =====================================================================
 renew_couchbase_certificate \
-    'OVH TEST' \
-    couch08.corp.monsenso.com \
-    couch08.corp.monsenso.com
-
-echo =====================================================================
-renew_couchbase_certificate \
-    'OVH PRD' \
-    couch07.corp.monsenso.com \
-    couch07.corp.monsenso.com
+    'Couch11 (OVH PRD)' \
+    couch11.eu.private.monsenso.com \
+    172.19.20.12
 
 echo =====================================================================
 renew_couchbase_certificate \
