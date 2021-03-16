@@ -42,9 +42,9 @@ renew_couchbase_certificate() {
     docker run --mount type=bind,src=$ACMESH_HOME/$CERTIFICATE_DOMAIN,dst=/mnt \
         monsenso.azurecr.io/couchbase-no-volume:v3 \
             couchbase-cli ssl-manage \
-                --cluster couchbase://${NODEs[0]} \
-                --username $CB_REST_USERNAME \
-                --password $CB_REST_PASSWORD \
+                --cluster "couchbase://${NODES[0]}" \
+                --username "$CB_REST_USERNAME" \
+                --password "$CB_REST_PASSWORD" \
                 --upload-cluster-ca /mnt/ca.cer
 
     for node in "${NODES[@]}"; do
@@ -53,9 +53,9 @@ renew_couchbase_certificate() {
             "$COUCHBASE_SSH_USER"@$node:/opt/couchbase/var/lib/couchbase/inbox
         docker run monsenso.azurecr.io/couchbase-no-volume:v3 \
             couchbase-cli ssl-manage \
-                --cluster couchbase://$node \
-                --username $CB_REST_USERNAME \
-                --password $CB_REST_PASSWORD \
+                --cluster "couchbase://$node" \
+                --username "$CB_REST_USERNAME" \
+                --password "$CB_REST_PASSWORD" \
                 --set-node-certificate
     done
 
