@@ -54,7 +54,7 @@ done
 . utils/set_secret.sh
 . utils/ensure_az_login.sh
 
-ensuze_az_login
+ensure_az_login
 
 VAULT_NAME=monsenso-$SERVING_REGION-$ENV-kv
 for f in secrets/*
