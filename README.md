@@ -14,7 +14,7 @@ Query CURL access role and the following
 password from the couchbasePassword secret in the key vault.
    couchbasePassword. And add the user to the services group.
 8. [Modify Function app and app service Configuration sections as needed.](docs/app-service-configuration.md)
-9. Deploy AzureFunctions.
+9. [Deploy AzureFunctions](docs/deploy-services.md).
 10. Run ./setup-secrets; Function app secrets are not available until an app has been deployed.
 11. Deploy the App Services.
 12. Add TLS certificate to the key vault.
