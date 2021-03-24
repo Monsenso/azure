@@ -30,6 +30,18 @@
         {
             "statement": "CREATE INDEX `treatment_plan_jointime` ON `data`(`accountId`,(distinct (array [(`v`.`name`), ((`v`.`val`).`joinTime`)] for `v` in object_innerpairs(`instances`) end))) WHERE (`type` = 'patient-plan')",
             "args": null
+        },
+        {
+            "statement": "CREATE INDEX `time_range` ON `data`((distinct (array (`v`.`name`) for `v` in object_innerpairs(`instances`) end)),`type`,`accountId`,`user_id`) WHERE (`isTimeQueryable` = true)",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `adv_clinicIds_accountType_accountId_type` ON `data`(`clinicIds`,`accountType`,`accountId`) WHERE (`type` = 'user_details')",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `adv_ifmissingornull_accountId_user_id` ON `data`(ifmissingornull(`accountId`, `user_id`))",
+            "args": null
         }
     ]
 }

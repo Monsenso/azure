@@ -11,6 +11,18 @@
         {
             "statement": "CREATE INDEX `email` ON `auth`(`validated`,str_to_utc(`timeOfCreation`),`clinicId`,`accountId`) WHERE (`type` = 'email')",
             "args": null
+        },
+        {
+            "statement": "CREATE INDEX `adv_ifmissingornull_A_accountId_A_user_id` ON `auth`(ifmissingornull((`A`.`accountId`), (`A`.`user_id`)))",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `adv_ifmissingornull_accountId_user_id` ON `auth`(ifmissingornull(`accountId`, `user_id`))",
+            "args": null
+        },
+        {
+            "statement": "CREATE INDEX `adv_ifmissingornull_accountId_user_id_type_account_concat_username_concat_account_sub_region` ON `auth`(ifmissingornull(`accountId`, `user_id`),('account_' || `username` || '_account-region')) WHERE (`type` = 'user')",
+            "args": null
         }
     ]
 }

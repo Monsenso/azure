@@ -1,0 +1,9 @@
+{
+    "statements": [
+        {
+            "statement": "CREATE INDEX `region` ON `global`(`type`,`region`)",
+            "args": null
+        }
+    ]
+}
+
