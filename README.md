@@ -18,7 +18,7 @@
 10. Run ./setup-secrets now; Skip this step if `systemFunctionsHostKey` is available in key vault already. This step is needed in case Function app secrets are not available until an app has been deployed.
 11. Deploy the App Services.
 12. [Add TLS certificate](docs/add-tls-certificate.md) to the key vault.
-13. Setup custom domains for the IdentityServer and RestService App Services.
+13. [Setup custom domains](docs/setup-custom-domains.md) for the IdentityServer and RestService App Services.
 14. Configure TLS for the IdentityServer and RestService App Services.
 15. Upload signing-cert.pfx and extra-valid-cert.pfx to the IdentityServer service. Temporarily enable ftps for the service to upload them over ftps.
 
