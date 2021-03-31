@@ -19,7 +19,7 @@
 11. Deploy the App Services.
 12. [Add TLS certificate](docs/add-tls-certificate.md) to the key vault.
 13. [Setup custom domains](docs/setup-custom-domains.md) for the IdentityServer and RestService App Services.
-14. Configure TLS for the IdentityServer and RestService App Services.
+14. [Configure TLS](docs/configure-tls.md) for the IdentityServer and RestService App Services.
 15. Upload signing-cert.pfx and extra-valid-cert.pfx to the IdentityServer service. Temporarily enable ftps for the service to upload them over ftps.
 
 # Couchbase cluster initialization
