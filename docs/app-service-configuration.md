@@ -18,20 +18,18 @@
 - The key vault needs to allow access from all networks, and as above, it should have been
   setup from the start. If it is not: Go to the key vault -> Networking in left hand menu -> Firewall and virtual networks tab -> Allow access from: All networks.
 - Help to specific setting values:
-  - Function App:
-    - `Mon_Environment`: The environment designation, fx `development-eu`. This correlates with
-      the name of the appsettings.json file, so make sure they match, e.g.
-      `development-eu` -> `appsettings.development-eu.json`
-    - `Mon_Couchbase__Password`: At the time of writing, this value will not be picked up from
-      the keyvault if it's only set in appsettings.json, so we override the value with an explicit
-      keyvault reference here.
-    - `TaskHubName`: Follow the naming convention, i.e. if the name of the Function App is:
-      `monsenso-weu-dev-system-functions` -> `weudevsystemfunctions`
-    - Any other setting starting with `Mon_`: This is a appsettings.json value, and will override
-      the value coming from appsettings.json. These can generally be skipped and set in appsettings.json, which exception of the above mentioned and any explicit overrides that may be desired.
-  - App Services:
-    - `Mon_Serilog__AzureAnalytics__PrimaryKey`: The secret is specified in the appsettings does not seem to resolve, pushing of logs failed authentication.
-    - `Mon_Withings__Secret`: There is a 120 request/minute rate-limit for Withings, and to stay
-      below that limit, each client in each region needs it's own Withings client. These clients
-      are created by a sysadmin account, so if a new one is required, ask someone with access to
-      create one for you.
+  - `Mon_Environment`: The environment designation, fx `development-eu`. This correlates with
+    the name of the appsettings.json file, so make sure they match, e.g.
+    `development-eu` -> `appsettings.development-eu.json`
+  - `Mon_Couchbase__Password`: At the time of writing, this value will not be picked up from
+    the keyvault if it's only set in appsettings.json, so we override the value with an explicit
+    keyvault reference here.
+  - `TaskHubName`: Follow the naming convention, i.e. if the name of the Function App is:
+    `monsenso-weu-dev-system-functions` -> `weudevsystemfunctions`
+  - Any other setting starting with `Mon_`: This is a appsettings.json value, and will override
+    the value coming from appsettings.json. These can generally be skipped and set in appsettings.json, which exception of the above mentioned and any explicit overrides that may be desired.
+  - `Mon_Serilog__AzureAnalytics__PrimaryKey`: The secret is specified in the appsettings does not seem to resolve, pushing of logs failed authentication.
+  - `Mon_Withings__Secret`: There is a 120 request/minute rate-limit for Withings, and to stay
+    below that limit, each client in each region needs it's own Withings client. These clients
+    are created by a sysadmin account, so if a new one is required, ask someone with access to
+    create one for you.

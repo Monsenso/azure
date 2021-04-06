@@ -4,7 +4,7 @@
   FTPS only.
 - Find the certificates in `IdentityServer/src`.
 - To connect to the App Service via FTPS, go to App Service -> Deployment Center ->
-  Deployment Credentials. A sidebar will open with the info you need to connect.
+  Deployment/FTPS Credentials. A sidebar will open with the info you need to connect.
   - The path to copy the certificates to should match the path set in the value of
     Configuration -> Application Settings -> `SIGNING_CERT_PATH` and `EXTRA_VALID_CERT_PATH`.
     This value could fx be `/home/certificates/extra-valid-cert.pfx`.
