@@ -31,8 +31,7 @@
       the value coming from appsettings.json. These can generally be skipped and set in appsettings.json, which exception of the above mentioned and any explicit overrides that may be desired.
   - App Services:
     - `Mon_Serilog__AzureAnalytics__PrimaryKey`: The secret is specified in the appsettings does not seem to resolve, pushing of logs failed authentication.
-    - `Mon_AzureFunctions__<anything>`:
-    - `Mon_Withings__Secret`: There is 120 request/minute rate-limit for Withings, and to stay
+    - `Mon_Withings__Secret`: There is a 120 request/minute rate-limit for Withings, and to stay
       below that limit, each client in each region needs it's own Withings client. These clients
       are created by a sysadmin account, so if a new one is required, ask someone with access to
       create one for you.
