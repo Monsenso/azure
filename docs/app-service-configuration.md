@@ -21,6 +21,10 @@
   - `Mon_Environment`: The environment designation, fx `development-eu`. This correlates with
     the name of the appsettings.json file, so make sure they match, e.g.
     `development-eu` -> `appsettings.development-eu.json`
+  - `ASPNETCORE_ENVIRONMENT`: This determines the hosting environment value, and should correspond
+    to the type of environment you are setting up, i.e. `Development` for a dev env. Note that
+    omitting this app setting defaults the value to `Production`; For a dev environment, this can
+    lead to CORS errors in the clients.
   - `Mon_Couchbase__Password`: At the time of writing, this value will not be picked up from
     the keyvault if it's only set in appsettings.json, so we override the value with an explicit
     keyvault reference here.
