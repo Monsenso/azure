@@ -38,7 +38,7 @@
       and then upload the generated folder with all containing files to acmesh.
   - Adding the certificates to Key Vault and Couchbase (using azure repo scripts):
     - Add the new Subscription to `subscriptions.env`.
-    - Add the environment and it's certificate to `renew-and-deploy-certificates.sh`.
+    - Add the environment and it's certificate to `renew-and-deplay-certificates.sh`.
       - for services use `renew_web_service_cert`
       - for couchbase use `renew_couchbase_certificate`
       - Examples:
@@ -55,10 +55,14 @@
           ```
     - Make sure you're logged in to the monsenso container registry:
       - az acr login -n monsenso
-    - Run the `renew-and-deploy-certificates.sh` script with ACMESH_HOME set to path of the
-      acmesh root folder. If ACMESH_HOME is not set explicitly, the default value, ~/.acmesh.sh,
+    - Run the `renew-and-deplay-certificates.sh` script with ACMESH_HOME set to path of the
+      acmesh root folder. If ACMESH_HOME is not set explicitly, the default value, `~/.acme.sh`,
       is used. Note that the NFS connect script copied from the Azure Storage page uses `/mnt/acmesh` as the default path.
       - The script utilizes SSH, so make sure you are connected to a VPN, so the couchbase server is available.
       - Example with the share mounted in `/mnt/acmesh`
         (note the added `/.acme.sh` compared to the default mounting folder):
-        `ACMESH_HOME=/mnt/acmesh ./renew-and-deploy-certificates.sh`
+        `ACMESH_HOME=/mnt/acmesh ./renew-and-deplay-certificates.sh`
+    - The Couchbase certificate should be visible in the web console -> Security -> Root
+      Certificate. Note that a HTTPS connection to the web console uses port 18091, so using above
+      example, a secure Couchbase connection can be made after uploading the certificate at:
+      https://weu-dev-couchbase.deveu.private.monsenso.com:18091/
