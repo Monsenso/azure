@@ -21,7 +21,7 @@
     - Guide to mounting the file share:
       https://docs.microsoft.com/en-us/azure/storage/files/storage-files-how-to-mount-nfs-shares#mount-an-nfs-share
     - Note that the cifs-utils package is required on Linux.
-    - Port 445 has to be open. This port can be blocked on by a firewall on both your machine, by your router and/or by your ISP. If the latter is the case, the block can be circumvented by using a VPN. If the block is local to your machine or router, it should be possible to open the port to TCP traffic in the firewall configuration.
+    - Port 445 has to be open. This port can be blocked by a firewall on both your machine, by your router and/or by your ISP. If the latter is the case, the block can be circumvented by using a VPN. If the block is local to your machine or router, it should be possible to open the port to TCP traffic in the firewall configuration.
     - Using NFS is preferred to just copying the files from `acmesh` to your machine, creating certificates and then uploading them, but this is also a viable approach. Using NFS ensures you're working with the correct, newest files, and helpes mitigate any issues with multiple people creating/renewing certificates at the same time.
   - See the `readme.md` in the `acmesh` root for how to issue a new certificate
     https://acmesh.file.core.windows.net/acmesh/readme.md

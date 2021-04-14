@@ -39,10 +39,19 @@ echo =====================================================================
 renew_web_service_cert monsenso-eu-dev-kv "*.dev.monsenso.com" $SUB_DEV01
 
 echo =====================================================================
+renew_web_service_cert monsenso-eu-tst-kv "*.test.monsenso.com" $SUB_TST01
+
+echo =====================================================================
 renew_couchbase_certificate \
     'Couch11 (OVH PRD)' \
     couch11.eu.private.monsenso.com \
     172.19.20.12
+
+echo =====================================================================
+renew_couchbase_certificate \
+    'Couch12 (DATA EXTRACT)' \
+    couch12.eu.private.monsenso.com \
+    172.19.20.27
 
 echo =====================================================================
 renew_couchbase_certificate \
@@ -61,3 +70,9 @@ renew_couchbase_certificate \
     'EU DEV' \
     weu-dev-couchbase.deveu.private.monsenso.com \
     weu-dev-couchbase.deveu.private.monsenso.com
+
+echo =====================================================================
+renew_couchbase_certificate \
+    'EU TEST' \
+    weu-tst-couchbase.tsteu.private.monsenso.com \
+    weu-tst-couchbase.tsteu.private.monsenso.com
