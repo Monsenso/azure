@@ -22,9 +22,8 @@
     -> Project Settings for the environment you're setting up (Fx `Green Development` for dev env)
     -> Service Accounts -> Generate new private key. (ATTOW the Test env is the same as the
     prod, i.e. `Green`)
-    - This will download a .json file, and the contents should be set as the value. To get a
-      one line input fit for pasting in terminal, use fx `jq`:
-      `jq -c . <downloaded-file.json>`
+    - This will download a .json file, and the contents should be set as the value. You will be
+      asked for the path to this file, from which the contents will be read.
   - `identityServerClientSecret`: OAuth client secret. Copy this from an existing env of same type.
   - `mailjetApiSecret`: Copy this from an existing env of same type.
   - `oldSigningCertificatePassword`: Copy this from an existing env of same type.
