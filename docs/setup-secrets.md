@@ -29,3 +29,6 @@
   - `oldSigningCertificatePassword`: Copy this from an existing env of same type.
   - `systemFunctionsHostKey`: This might fail if the Function App has not been deployed yet.
     In this case, do step 10 of the README guide.
+  - `withingsClientSecret`: You will NOT be prompted for this key. It has to be manually added,
+    either by using an existing secret value, or creating a new Withings client with corresponding
+    secret. If a new client is needed, ask someone with a sysadmin account to create it for you.
