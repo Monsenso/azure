@@ -12,6 +12,15 @@
     - `monsenso-weu-prd-jobserver-web-service`
     - `monsenso-weu-prd-auth-web-service`
     - `monsenso-weu-prd-system-functions` (Function App)
+- On the Function App, remember to setup CORS:
+
+1. Go to API -> CORS.
+2. Tick `Enable Access-Control-Allow-Credentials`.
+3. Add our web portal URLs as allowed origins, e.g. `https://my.dev.monsenso.com` and `https://portal.dev.monsenso.com`.
+4. Press `Save`.
+
+- Similarly, add the web portal URLs as allowed origins on the SignalR service under Settings
+  -> CORS.
 - Note that the services require access to the key vault, this should already have been setup
   when the environment was created. If that cannot be done, or it just hasn't been done, it can
   be fixed by going to the key vault in question: Access policies in left hand menu -> Add Access Policy -> Click Secret permissions -> Get - Click Principal and select the function app/service in question.
