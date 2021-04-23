@@ -41,3 +41,15 @@ file, excluding the extension, will be the name of the index.
 To add a new secret add a file in the secrets folder, the name of the file will be the name of
 the secret. The file will be executed as a bash script and its stdout is used as the secret
 value.
+
+# Common tasks
+
+## Add Service Connection to Subscription
+
+For the Services repo to be able to deploy to the App Services in a Subscription, a Service Connection is needed.
+
+Follow [this guide](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml) and for the selections:
+
+- Select `Azure Resource Manager` as the connection type
+- Select `Service Principal (automatic)` as the Authentication method
+- Select the Subscription to connect to and give it a "good name", fx. the same name as the Subscription in question.
