@@ -42,6 +42,14 @@ To add a new secret add a file in the secrets folder, the name of the file will 
 the secret. The file will be executed as a bash script and its stdout is used as the secret
 value.
 
+# Couchbase Sync Gateway
+
+If the Tastro app is required for the deployment/environment, for instance for a test environment
+where release testing requires Tastro, or a production environment with Tastro users, a Couchbase
+Sync Gateway is required.
+
+[Read this guide](docs/sync-gateway.md) on how to setup a Sync Gateway.
+
 # Common tasks
 
 ## Add Service Connection to Subscription
