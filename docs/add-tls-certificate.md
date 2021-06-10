@@ -34,8 +34,8 @@
       `./acme.sh --issue --dns dns_azure -d \*.eu.monsenso.com`
     - Running the acme script creates a domain key, and should print the location of the
       key to the console.
-    - Copy the files over locally if you get an error about Azure Subscription not specified,
-      and then upload the generated folder with all containing files to acmesh.
+    - The script uses the values set in `account.conf`, so check these are correct if there are any errors.
+    - If you get an error about Azure Subscription not specified, double check the values in `account.conf`. If you can still create new certificates, you can always copy the files over locally and then upload the generated folder with all containing files to `acmesh`.
   - Adding the certificates to Key Vault and Couchbase (using azure repo scripts):
     - Add the new Subscription to `subscriptions.env`.
     - Add the environment and it's certificate to `renew-and-deplay-certificates.sh`.

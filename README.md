@@ -10,7 +10,7 @@
    Query CURL access role and the following
    roles on All buckets: Application Access, Data Reader, Data Writer, Data DCP Reader,
    Data Monitor, Views Reader, Query Select, Query Update, Query Insert, and Query Delete.
-7. [Add a user](docs/couchbase-users-and-roles.md) to Couchbase called service-client with the
+7. [Add a user](docs/couchbase-users-and-roles.md) to Couchbase called `service-client` with the
    password from the couchbasePassword secret in the key vault.
    couchbasePassword. And add the user to the services group.
 8. [Modify Function app and app service Configuration sections as needed.](docs/app-service-configuration.md)

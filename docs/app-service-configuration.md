@@ -14,10 +14,10 @@
     - `monsenso-weu-prd-system-functions` (Function App)
 - On the Function App, remember to setup CORS:
 
-1. Go to API -> CORS.
-2. Tick `Enable Access-Control-Allow-Credentials`.
-3. Add our web portal URLs as allowed origins, e.g. `https://my.dev.monsenso.com` and `https://portal.dev.monsenso.com`.
-4. Press `Save`.
+  1. Go to API -> CORS.
+  2. Tick `Enable Access-Control-Allow-Credentials`.
+  3. Add our web portal URLs as allowed origins, e.g. `https://my.dev.monsenso.com` and `https://portal.dev.monsenso.com`.
+  4. Press `Save`.
 
 - Similarly, add the web portal URLs as allowed origins on the SignalR service under Settings
   -> CORS.
