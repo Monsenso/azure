@@ -59,5 +59,9 @@ renew_couchbase_certificate() {
                 --set-node-certificate
     done
 
-    shred -fu pkey.key chain.pem
+    if ! type shred &> /dev/null; then
+        rm pkey.key chain.pem
+    else
+        shred -fu pkey.key chain.pem         
+    fi    
 }

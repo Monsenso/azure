@@ -27,7 +27,7 @@ fi
 
 if [ "$ENV" == "" ]; then
     echo "ENV is not set. This must be set to the environment being deployed."
-    echo "I.e. prd, beta, test, dev"
+    echo "I.e. prd, beta, tst, tst-02, dev"
     exit 1
 fi
 
@@ -70,7 +70,7 @@ do
             echo "Value for $secret_name evaluated to empty; SKIPPING."
         else
             echo "Setting $secret_name secret"
-            set_secret $VAULT_NAME $secret_name $secret_value
+            set_secret $VAULT_NAME $secret_name "$secret_value"
         fi
     fi
 done
