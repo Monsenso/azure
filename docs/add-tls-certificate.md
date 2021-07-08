@@ -20,11 +20,11 @@
       | weu-dev-couchbase.deveu.private | A    | 3600 | 10.7.5.5 |
 
 - Step 2: Generate and upload a certificate:
-  - The `acmesh` file share contains the certificates. It is located in the acmesh storage account in Azure     Subscription 1, find it by:
+  - The `acmesh` file share contains the certificates. It is located in the acmesh storage account in Azure Subscription 1, find it by:
     - Search for Storage account. Make sure Azure subscription 1 is selected
-    - Select acmesh
+    - Select `acmesh`
     - In the menu on the left select File shares
-    - Select acmesh
+    - Select `acmesh`
   - Sync the file share on your computer: Different ways to read and update the file share (NFS or SMB preferred due to automatic sync)
     1. Use above file share capabilities in the browser
     2. You can use the `Azure Storage Explorer` application to browse `acmesh` and other storage accounts,
@@ -40,12 +40,13 @@
          - `open smb://acmesh:your_secret_access_url_listed_by_connect_button` which will mount /Volumes/acmesh
     - Using NFS is preferred to just copying the files from `acmesh` to your machine, creating certificates and then uploading them, but this is also a viable approach. Using NFS ensures you're working with the correct, newest files, and helpes mitigate any issues with multiple people creating/renewing certificates at the same time.
   - Issue a new certificate. See the `readme.md` in the `acmesh` root for how to do so.
-    - The `acme.sh` by default assumes the $HOME/.acme.sh/ directory. Create a sym link to it:
-
+    - If you do not have acmesh mounted in ~/.acme.sh, then either symlink
+      or do something similar on whatever OS you're on.
+      Fx on macOS
         ```bash
           In macOS:
-          ln -s /Volumes/acmesh $HOME
-          cd $HOME
+          ln -s /Volumes/acmesh ~
+          cd ~
           mv acmesh .acme.sh
         ```
 

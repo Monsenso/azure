@@ -1,6 +1,7 @@
 ## Running `setup-secrets.sh`
 
 ### Prerequisites
+
 - Log in into azure 'az login' and container registry 'az acr login -n monsenso' (requires
   docker daemon running)
 - Note the required variables to be set, e.g.:
@@ -8,15 +9,19 @@
   `DEPL_REGION=weu`
   `ENV=dev`
 - Make sure you are using the correct subscription by setting the default one.
-    ```
+
+    ```bash
       use 'az account set --subscription <subscription id>' to change subscription
       use 'az account list --output table' to show a list of available subscriptions
     ```
+
   - If the desired subscription is not listed as an option, do "az login" to refresh local
     subscription list state.
   - If the subscription is not available in some create dialog on the Azure portal,
     try logging out and in again.
+
 ### Script execution
+
 - Full command example: `SERVING_REGION=eu DEPL_REGION=weu ENV=dev ./setup-secrets.sh`.
 - Any missing ResourceGroups should be created on the subscription.
 - You will be prompted for the following values:
@@ -46,9 +51,11 @@
     "https://green.monsenso.com", Environment: "Prod" for production, beta, test environments)
 
 ### Cleanup
+
   In order that `setup-secrets.sh` can access the key vault, the key vault needed to allow access from all networks or whitelisted IP. It is best security practice to narrow down this access after the `setup-secrets.sh` was run.
 
 ### Troubleshooting
+
   - The scripts assumes naming conventions. If a script is failing check the name of the requested
   Azure resource and adjust the script for this special exceptional case (e.g. due to name max 24 chars
   monsensoweutst-02sysfunc01 was named monsweutst02sysfunc01)

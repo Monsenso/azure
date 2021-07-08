@@ -50,10 +50,10 @@ echo =====================================================================
 renew_web_service_cert monsenso-eu-tst-kv "*.test.monsenso.com" $SUB_TST01
 
 echo =====================================================================
-renew_web_service_cert monsenso-eu-tst-02-kv "*.test-02.monsenso.com" $SUB_TST02
+renew_web_service_cert monsenso-uaen-prd-kv "*.uaen.monsenso.com" $SUB_PRD03
 
 echo =====================================================================
-renew_web_service_cert monsenso-uaen-prd-kv "*.uaen.monsenso.com" $SUB_PRD03
+renew_web_service_cert monsenso-eu-tst-02-kv "*.test-02.monsenso.com" $SUB_TST02
 
 echo =====================================================================
 renew_couchbase_certificate \

@@ -13,4 +13,5 @@
   - On macOS e.g. FileZilla app supports FTPS
 
 ## Cleanup
-- Disable ftps for the service to upload them over ftps.
+
+- Disable FTPS again.

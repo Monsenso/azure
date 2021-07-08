@@ -13,7 +13,7 @@
 		- Add the secret to the key vault under key `withingsClientSecret`
 	- `dataProtectionBlobUri`: 
 		- Needs to be a unique file name for the environment, so update that to e.g.:
-			- `.../keys-weu-test-02.xml?...` for an eu prod environment.
+			- `.../keys-weu-test-02.xml?...` for an weu test 02 environment.
 		- Create the shared access signature as noted here <https://dev.azure.com/monsenso/Clients/_wiki/wikis/Wiki/88/Renew-IdentityServer-data-protection-shared-access-signature>
 
 ## Add Service Connection to Subscription

@@ -2,9 +2,10 @@
 
 - Get access to the corresponding VPN by following the [Wiki article on Azure VPN](https://dev.azure.com/monsenso/Clients/_wiki/wikis/Wiki/47/Azure-VPN).
   - The corresponding ResourceGroup should relate to the Region, so for an EU setup, use the eu-vpn
-- SSH to the server, using your Azure account.
+- SSH to the server
+  - Look up the IP of the couchbase VM in Azure. The IP could fx be 10.13.5.5.
   - Example in bash:
-    `ssh surname@monsenso.com@$IP_ADDRESS_VM_COUCHBASE`
+    `IP_ADDRESS_VM_COUCHBASE=10.13.5.5; ssh surname@monsenso.com@$IP_ADDRESS_VM_COUCHBASE`
   - Troubleshooting:
     - Verify that your user has 'Virtual Machine Administrator Login' role
     - Check your VPN connection
