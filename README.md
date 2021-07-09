@@ -10,7 +10,7 @@
 7. [Add a group](docs/couchbase-users-and-roles.md) to Couchbase called `services` with the
    Query CURL access role and the following
    roles on All buckets: Application Access, Data Reader, Data Writer, Data DCP Reader,
-   Data Monitor, Views Reader, Query Select, Query Update, Query Insert, and Query Delete.   
+   Data Monitor, Views Reader, Query Select, Query Update, Query Insert, and Query Delete.
 8. [Add a user](docs/couchbase-users-and-roles.md) to Couchbase called `service-client` with the
    password from the couchbasePassword secret in the key vault.
    couchbasePassword. And add the user to the services group.
@@ -20,8 +20,12 @@
 12. [Setup custom domains](docs/setup-custom-domains.md) for the IdentityServer and RestService App Services.
 13. [Configure TLS](docs/configure-tls.md) for the IdentityServer and RestService App Services.
 14. [Upload signing-cert.pfx and extra-valid-cert.pfx](docs/upload-identityserver-certificates.md) to the IdentityServer service. Temporarily enable ftps for the service to upload them over ftps.
-16. Add new endpoints|environment to clients: `Green + monsenso-i18n +  monsenso-library` 
-17. QA team [configures couchbase data](docs/configure-couchbase-data.md) according to the environment
+15. Add new endpoints|environment to `monsenso-i18n +  monsenso-library` to be consumed by
+    `Green, NWP, Funmachine, Phoenix` via npm lib dependency.
+16. [Prepare CDN storage account](docs/prepare-cdn-storage-account.md)
+17. [Deploy web apps to CDN](docs/deploy-web-apps-to-cdn.md)
+18. [Add CDN custom domains and adjust CDN rule engine](doc/../docs/add-cdn-custom-domains-adjust-rule-engine.md)
+19. QA team [configures couchbase data](docs/configure-couchbase-data.md) according to the environment
 
 # Couchbase cluster initialization
 
