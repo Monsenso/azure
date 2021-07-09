@@ -6,6 +6,14 @@ upload_certificate_to_keyvault() {
     local FULLCHAIN_PATH=$3
     local KEY_PATH=$4
     local SUBSCRIPTION=$5
+
+    if grep --version | grep -q "FreeBSD"; then
+        if ! type ggrep &> /dev/null; then
+            echo "On macOS install grep via HomeBrew to get the GNU version of grep -> ggrep "
+            exit 1
+        fi
+    fi
+
     if [ ! -f $FULLCHAIN_PATH ]; then
         echo $FULLCHAIN_PATH not found
         exit 1
@@ -16,7 +24,11 @@ upload_certificate_to_keyvault() {
         exit 1
     fi
 
-    local days_left_on_cert=$(ssl-cert-check -c "$FULLCHAIN_PATH" -n | grep -oP '(?<=days=)\d*' || echo -1)
+    if ! type ggrep &> /dev/null; then #Homebrew macOS prefix 'g' for grep
+        local days_left_on_cert=$(ssl-cert-check -c "$FULLCHAIN_PATH" -n | grep -oP '(?<=days=)\d*' || echo -1)
+    else 
+        local days_left_on_cert=$(ssl-cert-check -c "$FULLCHAIN_PATH" -n | ggrep -oP '(?<=days=)\d*' || echo -1)
+    fi
     if [ $days_left_on_cert -le 0 ]; then
         echo "$FULLCHAIN_PATH has expired!"
         exit 1

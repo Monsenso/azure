@@ -1,8 +1,16 @@
 #!/bin/bash
 
 if ! type shred &> /dev/null; then
-    echo "shred is not installed."
+    echo "shred is not installed. If your file system defaults secure deletion then install shred"
+    echo "Otherwise comment out below exit 1 and take other security mechanism (e.g. disc encryption)"
     exit 1
+fi
+
+if grep --version | grep -q "FreeBSD"; then
+    if ! type ggrep &> /dev/null; then
+        echo "On macOS install grep via HomeBrew to get the GNU version of grep -> ggrep "
+        exit 1
+    fi
 fi
 
 if ! type openssl &> /dev/null; then
@@ -45,6 +53,9 @@ echo =====================================================================
 renew_web_service_cert monsenso-uaen-prd-kv "*.uaen.monsenso.com" $SUB_PRD03
 
 echo =====================================================================
+renew_web_service_cert monsenso-eu-tst-02-kv "*.test-02.monsenso.com" $SUB_TST02
+
+echo =====================================================================
 renew_couchbase_certificate \
     'Couch11 (OVH PRD)' \
     couch11.eu.private.monsenso.com \
@@ -85,3 +96,9 @@ renew_couchbase_certificate \
     'UAEN PRD' \
     uaen-prd-couchbase.uaen.private.monsenso.com \
     uaen-prd-couchbase.uaen.private.monsenso.com
+
+echo =====================================================================
+renew_couchbase_certificate \
+    'EU TEST-02' \
+    weu-tst-02-couchbase.tst02eu.private.monsenso.com \
+    weu-tst-02-couchbase.tst02eu.private.monsenso.com

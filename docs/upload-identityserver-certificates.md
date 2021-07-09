@@ -8,3 +8,10 @@
   - The path to copy the certificates to should match the path set in the value of
     Configuration -> Application Settings -> `SIGNING_CERT_PATH` and `EXTRA_VALID_CERT_PATH`.
     This value could fx be `/home/certificates/extra-valid-cert.pfx`.
+    Note: On the app service file system uploading via FTPS to `/certificates` maps to
+    `/home/certificates` directory (can be verified via SSH on the app service vm )
+  - On macOS e.g. FileZilla app supports FTPS
+
+## Cleanup
+
+- Disable FTPS again.

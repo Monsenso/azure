@@ -24,8 +24,6 @@
 - Note that the services require access to the key vault, this should already have been setup
   when the environment was created. If that cannot be done, or it just hasn't been done, it can
   be fixed by going to the key vault in question: Access policies in left hand menu -> Add Access Policy -> Click Secret permissions -> Get - Click Principal and select the function app/service in question.
-- The key vault needs to allow access from all networks, and as above, it should have been
-  setup from the start. If it is not: Go to the key vault -> Networking in left hand menu -> Firewall and virtual networks tab -> Allow access from: All networks.
 - Help to specific setting values:
   - `Mon_Environment`: The environment designation, fx `development-eu`. This correlates with
     the name of the appsettings.json file, so make sure they match, e.g.
